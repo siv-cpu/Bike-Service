@@ -12,7 +12,7 @@ class UserSeeder extends Seeder
         // Create an Owner
         User::create([
             'name' => 'John Doe',
-            'email' => 'owner@example.com',
+            'email' => 'owner@gmail.com',
             'mobile' => '142351543534',
             'password' => Hash::make('password'),
             'role' => 'admin',
@@ -20,8 +20,8 @@ class UserSeeder extends Seeder
 
         // Create a Customer
         User::create([
-            'name' => 'Alice Smith',
-            'email' => 'customer@example.com',
+            'name' => 'customer',
+            'email' => 'customer@gmail.com',
             'mobile' => '9876501234',
             'password' => Hash::make('password'),
             'role' => 'customer',
