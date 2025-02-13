@@ -22,6 +22,7 @@ Route::middleware('auth')->group(function () {
 
 Route::get('admin/dashboard',[HomeController::class,'index'])->middleware(['auth','admin']);
 
+//for owner
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('admin/dashboard',[HomeController::class,'index']);
     Route::resource('services', ServiceController::class);
@@ -31,6 +32,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('bookings/{id}/completed', [BookingController::class, 'markAsCompleted'])->name('bookings.completed');
 });
 
+// for customer
 Route::middleware(['auth'])->group(function () {
     Route::get('/my-bookings', [BookingController::class, 'myBookings'])->name('bookings.my_bookings');
     Route::get('/bookings/create', [BookingController::class, 'create'])->name('bookings.create');

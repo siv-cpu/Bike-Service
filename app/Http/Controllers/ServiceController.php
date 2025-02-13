@@ -9,13 +9,13 @@ class ServiceController extends Controller
 {
     public function index()
     {
-        $services = Service::all();
-        return view('services.index', compact('services'));
+        $services = Service::all(); //retrive all service
+        return view('services.index', compact('services')); //pass data to view
     }
 
     public function create()
     {
-        return view('services.create');
+        return view('services.create'); //Show service create form
     }
 
     public function store(Request $request)
@@ -26,7 +26,7 @@ class ServiceController extends Controller
             'price' => 'required|numeric',
         ]);
 
-        Service::create($request->all());
+        Service::create($request->all()); //// Insert new service
 
         return redirect()->route('services.index')->with('success', 'Service added successfully!');
     }
@@ -34,15 +34,15 @@ class ServiceController extends Controller
 
     public function edit($id)
     {
-        $service = Service::findOrFail($id);
-        return view('services.edit', compact('service'));
+        $service = Service::findOrFail($id); // Find the service by ID
+        return view('services.edit', compact('service'));  // Pass the data to edit form
     }
 
 
     public function update(Request $request, $id)
     {
-        $service = Service::findOrFail($id);
-        $service->update($request->all());
+        $service = Service::findOrFail($id); // Fetch service by ID
+        $service->update($request->all()); // Update new data
         return redirect()->route('services.index')->with('success', 'Service updated successfully.');
     }
 
@@ -50,7 +50,7 @@ class ServiceController extends Controller
     public function destroy($id)
     {
         $service = Service::findOrFail($id);
-        $service->delete();
+        $service->delete(); // Delete the record 
         return redirect()->route('services.index')->with('success', 'Service deleted successfully.');
     }
 }
